@@ -1,31 +1,40 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class MenuUIHandler : MonoBehaviour
 {
-    public string currentPlayerName;
-
-
-    public void StartNew()
+    [SerializeField] private Text welcomeText;
+    [SerializeField] private Text nameInput;
+    // Start is called before the first frame update
+    void Start()
     {
-        SceneManager.LoadScene(1);
-        
+        welcomeText.text = "Welcome, " + GameManager.Instatnce.PlayerName + "!";
     }
 
-    public void Exit()
-    {   
-        #if UNITY_EDITOR
-            EditorApplication.ExitPlaymode();
-        #else
-            Application.Quit(); // original code to quit Unity player
-        #endif
+    public void SetPlayerName()
+    {
+        welcomeText.text = "Welcome, " + nameInput.text + "!";
+        GameManager.Instatnce.SetPlayerName(nameInput.text);
+    }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("main");
+    }
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+        GameManager.Instatnce.SaveHighScores();
+    }
+    public void LoadSettingsScreen()
+    {
+        SceneManager.LoadScene("SettingsScreen");
     }
 }
