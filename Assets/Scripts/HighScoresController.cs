@@ -11,6 +11,8 @@ public class HighScoresController : MonoBehaviour
     private bool loadStartScreen;
     [SerializeField] private float delayTime = 3.0f;
     private IEnumerator delayCoroutine;
+
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -348,7 +348,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome player, \nplease enter your name!"
+  m_Text: Welcome player!
 --- !u!222 &140394209
 CanvasRenderer:
   m_ObjectHideFlags: 0

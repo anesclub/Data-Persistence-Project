@@ -22,8 +22,11 @@ public class GameManager : MonoBehaviour
         }
         Instatnce = this;
         DontDestroyOnLoad(gameObject);
+
         PlayerName = "Player";
+
         scores = new List<HighScoreEntry>();
+        
         if (!LoadHighScores())
         {
             InitializeTable();

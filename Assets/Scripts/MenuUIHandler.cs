@@ -20,10 +20,13 @@ public class MenuUIHandler : MonoBehaviour
         welcomeText.text = "Welcome, " + nameInput.text + "!";
         GameManager.Instatnce.SetPlayerName(nameInput.text);
     }
+
     public void StartGame()
     {
         SceneManager.LoadScene("main");
     }
+
+
     public void ExitGame()
     {
 #if UNITY_EDITOR
@@ -33,6 +36,8 @@ public class MenuUIHandler : MonoBehaviour
 #endif
         GameManager.Instatnce.SaveHighScores();
     }
+
+
     public void LoadSettingsScreen()
     {
         SceneManager.LoadScene("SettingsScreen");
