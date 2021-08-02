@@ -38,8 +38,8 @@ public class MainManager : MonoBehaviour
             }
         }
                
-               
-        //dataManger = GameObject.Find("DataManager").GetComponent<DataManager>;
+        //dataManger.LoadTopScoreFromFile();       
+        
         //TopScoreText.text = "Best score: "+ dataManger.LoadTopScoreFromFile(); 
         //+ " point by " + dataManger.LoadNameFromFile() ;
 

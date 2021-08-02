@@ -9,9 +9,9 @@ public class DataManager : MonoBehaviour
     public TMP_InputField TMPInputField;
     public TextMeshProUGUI topScoreText;
     public static DataManager Instance;
-    public string currentPlayerName;
     public string bestPlayerName;
     public int topScore;
+    public string currentPlayerName;
 
     void Start()
     {   
@@ -42,18 +42,25 @@ public class DataManager : MonoBehaviour
         public int HigherScore;
     }
 
+    public void StoreCurrentData()
+    {
+        currentPlayerName = TMPInputField.text;
+        
+    }
+
     public void SaveDataInFile()
     {   
         SaveData data = new SaveData();
-        
-        data.PlayerName = TMPInputField.text;
+        data.PlayerName =currentPlayerName;
         if(TMPInputField != null)
         {
-            data.PlayerName = TMPInputField.text;
+            data.PlayerName = currentPlayerName;
+            data.HigherScore = topScore;
         }      
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+        //C:\Users\anes.houari\AppData\LocalLow\DefaultCompany\SimpleBreakout
     }        
 
     public string LoadNameFromFile()
@@ -64,8 +71,7 @@ public class DataManager : MonoBehaviour
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            bestPlayerName = data.PlayerName;
-            
+            bestPlayerName = data.PlayerName;         
         }
         return bestPlayerName;
         
